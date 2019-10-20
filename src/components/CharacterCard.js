@@ -9,14 +9,14 @@ import { Container, Row, Col } from 'reactstrap';
 export default function CharacterCard(props) {
 
   return  <Card>
-          <Container >
-          <CardBody>
-          <div><img src={props.img}></img></div>
-          <StyledTitle>Name:{props.name}</StyledTitle>
-          <StyledSubTitle>Status:{props.status}</StyledSubTitle>
-          <StyledSubTitle>Species:{props.species}</StyledSubTitle>
-          </CardBody>
-          </Container>
+            <Container >
+              <CardBody>
+                <div><img src={props.img}></img></div>
+                <StyledTitle>Name:{props.name}</StyledTitle>
+                <StyledSubTitle>Status:{props.status}</StyledSubTitle>
+                <StyledSubTitle>Species:{props.species}</StyledSubTitle>
+              </CardBody>
+            </Container>
           </Card>
  
 }
