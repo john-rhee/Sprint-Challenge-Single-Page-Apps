@@ -8,19 +8,18 @@ import { Container, Row, Col } from 'reactstrap';
 
 export default function CharacterCard(props) {
 
-
   return  <Card>
           <Container >
           <CardBody>
-          <StyledTitle>{props.name}</StyledTitle>
-          <StyledSubTitle>{props.status}</StyledSubTitle>
-          <StyledSubTitle>{props.species}</StyledSubTitle>
+          <div><img src={props.img}></img></div>
+          <StyledTitle>Name:{props.name}</StyledTitle>
+          <StyledSubTitle>Status:{props.status}</StyledSubTitle>
+          <StyledSubTitle>Species:{props.species}</StyledSubTitle>
           </CardBody>
           </Container>
           </Card>
  
 }
-
 
 export const StyledTitle = styled.h1`
   font-size:39px;

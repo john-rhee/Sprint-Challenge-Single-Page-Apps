@@ -5,24 +5,15 @@ import CharacterList from "./components/CharacterList.js";
 import CharacterCard from "./components/CharacterCard.js";
 import WelcomePage from "./components/WelcomePage.js";
 
-
 export default function App() {
-
-  const [list, setList] = useState( [] );
-
-  
 
   return (
     <main>
-    
-
-
-
+      <Link to="/">Home</Link>
       <Header />
-      
-
       <Route exact path="/" component={WelcomePage} />
       <Route exact path="/characters" component={CharacterList} />
+      <Link to="/characters">Search Page</Link>
     </main>
   );
 }

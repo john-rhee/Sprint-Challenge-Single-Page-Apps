@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
 import CharacterCard from "./CharacterCard.js";
+import WelcomePage from "./WelcomePage.js";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
-  const [ch, setCh] = useState([])
 
+  // Setting data downloaded from API
+  const [downloadedData, setDownloadedData] = useState([])
+  // Setting searched term in form
   const [searchTerm, setSearchTerm] = useState("");
- 
+  // Setting results
   const [searchResults, setSearchResults] = useState([]);
 
   const handleChange = event => {
@@ -23,14 +25,15 @@ export default function CharacterList() {
       axios
         .get('https://rickandmortyapi.com/api/character/')
         .then(response => {
-          setCh(response.data.results);
+          // Setting data downloaded from API
+          setDownloadedData(response.data.results);
           console.log(response);
-          
-
-          
-          const results = ch.filter(character1 =>
-            character1.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );setSearchResults(results)})
+          // Filtering searched word and setting to result
+          const results = downloadedData.filter(dataObject =>
+            dataObject.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );  
+          setSearchResults(results)
+        })
 
           .catch(error => {
             console.error('Server Error', error);
@@ -40,49 +43,31 @@ export default function CharacterList() {
         }, [searchTerm]);
 
 
-
-        
-        
-    
-  
-  
-  
   return (
-    <section>
-
+    <div>
+    <WelcomePage />
     <form>
     <input
           id="name"
           type="text"
           name="textfield"
-          placeholder="Search"
+          placeholder="Search Name"
           value={searchTerm}
           onChange={handleChange}
     />
     </form>
-
-
      {searchResults.map((list,index) => (
        <div key={index}>
          <CharacterCard
+         img={list.image}
          name={list.name}
          status={list.status}
          species={list.species}
          img={list.image}
          />
-        
         </div> 
       ))}
-
-      {/* <div>
-        <ul>
-          {searchResults.map(character => (
-            <li key={character}>{character}</li>
-          ))}
-        </ul>
-      </div> */}
-
-    </section>
+    </div>
   );
 }
 
