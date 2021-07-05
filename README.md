@@ -29,6 +29,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 > Answer:
 
+It is faster once it is loaded than requesting data everytime and refreshing.
+
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
